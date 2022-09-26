@@ -20,5 +20,5 @@ else
         b = b / 10;
     }
     b = b % 10;
-    Console.WriteLine($"Третьей цифра числа {a} - {b}");
+    Console.WriteLine($"Третья цифра числа {a} - {b}");
 }
