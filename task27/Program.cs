@@ -4,34 +4,26 @@
 // 82 -> 10
 // 9012 -> 12
 
-int SumOfDigits(int n1)
+
+
+Console.Write("Введите число: ");
+int numberN = Convert.ToInt32(Console.ReadLine());
+
+int SumNumber(int numberN)
 {
-    int sumOfDigits = 0;
-    while (n1 != 0)
+
+    int counter = Convert.ToString(numberN).Length;
+    int advance = 0;
+    int result = 0;
+
+    for (int i = 0; i < counter; i++)
     {
-        if (n1 < 0) n1 = n1 * -1;
-        sumOfDigits = sumOfDigits + n1 % 10;
-        n1 /= 10;
+        advance = numberN - numberN % 10;
+        result = result + (numberN - advance);
+        numberN = numberN / 10;
     }
-    return sumOfDigits;
+    return result;
 }
 
-bool proceed = true;
-while (proceed)
-{
-    Console.Clear();
-
-    int n = 0;
-    Console.Write("Введите число: ");
-    while (!int.TryParse(Console.ReadLine(), out n))
-    {
-        Console.Write("Ошибка ввода, введите число: ");
-    }
-
-    int sumOfDigitsResult = SumOfDigits(n);
-    Console.WriteLine($"Сумма его цифр = {sumOfDigitsResult}.");
-
-    Console.WriteLine("Нажмите 'Enter' для повтора или другую клавишу для выхода: ");
-    proceed = Console.ReadKey().Key == ConsoleKey.Enter;
-}
-Console.WriteLine("Всё готово");
+int sumNumber = SumNumber(numberN);
+Console.WriteLine("Сумма цифр в числе: " + sumNumber);

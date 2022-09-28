@@ -3,45 +3,23 @@
 // 3, 5 -> 243 (3⁵)
 // 2, 4 -> 16
 
-double ABPower(int a1, int b1)
+
+
+int Exponentiation(int numberA, int numberB)
 {
-    double abPower = 1;
-    if (b1 >= 0)
-        for (int i = 0; i < b1; i++)
-        {
-            abPower *= a1;
-        }
-    else
-        for (int i = 0; i > b1; i--)
-        {
-            abPower /= a1;
-        }
-    return abPower;
+    int result = 1;
+    for (int i = 1; i <= numberB; i++)
+    {
+        result = result * numberA;
+    }
+    // int result = Math.Pow(numberA, numberB);
+    return result;
 }
 
-bool proceed = true;
-while (proceed)
-{
-    Console.Clear();
-    int a = default;
-    int b = default;
+Console.Write("Введите число: ");
+int numberA = Convert.ToInt32(Console.ReadLine());
+Console.Write("В какую степень будем его возводить?: ");
+int numberB = Convert.ToInt32(Console.ReadLine());
 
-    Console.Write("Введите число: ");
-    while (!int.TryParse(Console.ReadLine(), out a))
-    {
-        Console.Write("Ошибка ввода, введите число: ");
-    }
-
-    Console.Write("В какую степень будем его возводить? ");
-    while (!int.TryParse(Console.ReadLine(), out b))
-    {
-        Console.Write("Ошибка ввода, введите степень: ");
-    }
-
-    double abPowerResult = ABPower(a, b);
-    Console.WriteLine($"Число {a} в {b} степени = {abPowerResult}.");
-
-    Console.WriteLine("Нажмите 'Enter' для повтора или другую клавишу для выхода: ");
-    proceed = Console.ReadKey().Key == ConsoleKey.Enter;
-}
-Console.WriteLine("Всё готово");
+int exponentiation = Exponentiation(numberA, numberB);
+Console.WriteLine("Ответ: " + exponentiation);
